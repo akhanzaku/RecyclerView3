@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements HotelAdapter.IHot
 
     static final int REQUEST_CODE_ADD = 1;
     private static final String HOTEL = "hotel";
+    int itemPos;
+
     ArrayList<Hotel> mList = new ArrayList<>();
     HotelAdapter mAdapter;
 
@@ -106,6 +108,30 @@ public class MainActivity extends AppCompatActivity implements HotelAdapter.IHot
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(HOTEL, mList.get(pos));
         startActivity(intent);
+    }
+
+    @Override
+    public void doEdit(int pos) {
+        itemPos = pos;
+        Intent intent = new Intent(this, InputActivity.class);
+        intent.putExtra(HOTEL, mList.get(pos));
+        startActivityForResult(intent, 99);
+        //code edit 99 string e error
+    }
+
+    @Override
+    public void doDelete(int pos) {
+
+    }
+
+    @Override
+    public void doFav(int pos) {
+
+    }
+
+    @Override
+    public void doShare(int pos) {
+
     }
 
     @Override
